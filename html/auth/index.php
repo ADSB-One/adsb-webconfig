@@ -14,7 +14,7 @@
         color: #FFF;
     }
 
-    .adsbx-green {
+    .adsb-green {
         color: #FFF;
     }
 
@@ -114,7 +114,7 @@ if (!empty($_POST["password"]) or $unlocked) {
         if (authenticate('pi', 'adsb123')) {
             $authenticated = true;
         } else {
-            system('sudo /adsbexchange/webconfig/helpers/enable_auth.sh');
+            system('sudo /adsb/webconfig/helpers/enable_auth.sh');
         }
     } else {
         if (authenticate('pi', $_POST["password"])) {
@@ -139,28 +139,28 @@ if (!empty($_POST["password"]) or $unlocked) {
 <body>
 <center>
 
-<h4 class="adsbx-green logo-margin"><img src="../img/adsbx-svg.svg" width="35"/>  ADSBexchange.com</h4>
-<h6>ADSBX ADS-B Anywhere<br />Feeder Authorization</h6>
+<h4 class="adsb-green logo-margin"><img src="../img/adsbx-svg.svg" width="35"/>  ADSBexchange.com</h4>
+<h6>ADSB ADS-B Anywhere<br />Feeder Authorization</h6>
 <a class="btn btn-primary" href="../">(..back to main menu)</a><br />
 <br />
 This password is synced with local user account "pi",<br />
-whose default password is <a href="https://www.adsbexchange.com/sd-card-docs/">listed in the documentation.</a>
+whose default password is <a href="https://www.adsb.one/sd-card-docs/">listed in the documentation.</a>
 <br /><br />
 
 <?php
 //handle PW change
 if (!empty($_POST["newpassword1"])) {
     if ($_SESSION['authenticated'] == 1) {
-        //error_log('attempting password change: ' . 'sudo /adsbexchange/webconfig/helpers/change_passwd.sh pi "' . $_POST["oldpassword"] . '" "' . $_POST["newpassword1"] . '"');
+        //error_log('attempting password change: ' . 'sudo /adsb/webconfig/helpers/change_passwd.sh pi "' . $_POST["oldpassword"] . '" "' . $_POST["newpassword1"] . '"');
         echo('<br>Attempting password change ....<br>');
-        $output = system('sudo /adsbexchange/webconfig/helpers/change_passwd.sh pi ' . escapeshellarg($_POST["oldpassword"]) . ' ' . escapeshellarg($_POST["newpassword1"]) . ' 2>&1', $retval);
+        $output = system('sudo /adsb/webconfig/helpers/change_passwd.sh pi ' . escapeshellarg($_POST["oldpassword"]) . ' ' . escapeshellarg($_POST["newpassword1"]) . ' 2>&1', $retval);
         if ($retval != 0) {
             echo('<br>Password change failed.<br>');
             return;
         }
         echo('<br>Your password has been changed. <br>');
         echo('<p><a href=".">Click here to login... </a></center></body></html>');
-        system('sudo /adsbexchange/webconfig/helpers/enable_auth.sh');
+        system('sudo /adsb/webconfig/helpers/enable_auth.sh');
         session_unset();
         exit;
     }
@@ -184,7 +184,7 @@ if (!empty($_POST["newpassword1"])) {
         <progress value="0" max="40" id="progressBar"></progress>
         <br /><br />Rebooting... </center></body></html>
         <?php
-        system('sudo /adsbexchange/webconfig/helpers/reboot.sh > /dev/null 2>&1 &');
+        system('sudo /adsb/webconfig/helpers/reboot.sh > /dev/null 2>&1 &');
         exit;
      }
  }
@@ -207,7 +207,7 @@ if (!empty($_POST["newpassword1"])) {
         <progress value="0" max="20" id="progressBar"></progress>
         <br /><br />Shutting down... </center></body></html>
         <?php
-        system('sudo /adsbexchange/webconfig/helpers/shutdown.sh > /dev/null 2>&1 &');
+        system('sudo /adsb/webconfig/helpers/shutdown.sh > /dev/null 2>&1 &');
         exit;
      }
  }
@@ -235,7 +235,7 @@ if (!empty($_POST["newpassword1"])) {
         <?php
         ob_end_flush();
         flush();
-        exec('sudo /adsbexchange/webconfig/helpers/run-update.sh > /dev/null 2>&1 &');
+        exec('sudo /adsb/webconfig/helpers/run-update.sh > /dev/null 2>&1 &');
         ?>
         <br />System will reboot when complete... log will be viewable at the bottom of the info page after the reboot.</center></body></html>
         <?php
@@ -265,7 +265,7 @@ if (!empty($_POST["newpassword1"])) {
         <?php
         ob_end_flush();
         flush();
-        exec('sudo /adsbexchange/webconfig/helpers/run-defaults.sh > /dev/null 2>&1 &');
+        exec('sudo /adsb/webconfig/helpers/run-defaults.sh > /dev/null 2>&1 &');
         ?>
         <br /><br />System will reboot when complete... </center></body></html>
         <?php

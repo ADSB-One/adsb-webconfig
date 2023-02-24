@@ -14,8 +14,8 @@ function aptInstall() {
     fi
 }
 
-if ! [[ -f /boot/adsbx-version ]]; then
-    echo 8.0123456789 > /boot/adsbx-version
+if ! [[ -f /boot/adsb-version ]]; then
+    echo 8.0123456789 > /boot/adsb-version
 fi
 
 aptInstall whois php php-common php-fpm php-cgi dnsmasq
@@ -31,7 +31,7 @@ for dir in /etc/php/*; do
     echo -e "; Put session info here, to prevent SD card writes\nsession.save_path = \"/tmp\"" > "$dir/cgi/conf.d/30-session_path.ini" || true
 done
 
-ipath=/adsbexchange/webconfig
+ipath=/adsb/webconfig
 
 mkdir -p $ipath
 cp adsb-config.txt.webtemplate webconfig.sh leds.sh sanitize-uuid.sh $ipath
@@ -46,14 +46,14 @@ cp -r -T ./helpers $ipath/helpers
 chmod a+x $ipath/helpers/*.sh
 cp ./010_www-data /etc/sudoers.d/
 for file in helpers/*.sh; do
-    echo "www-data ALL = NOPASSWD: /adsbexchange/webconfig/$file" >> /etc/sudoers.d/010_www-data
+    echo "www-data ALL = NOPASSWD: /adsb/webconfig/$file" >> /etc/sudoers.d/010_www-data
 done
 
-rm -rf /adsbexchange/update
-mkdir -p /adsbexchange
-git clone --depth 1 https://github.com/ADSBexchange/adsbx-update.git /adsbexchange/update
+rm -rf /adsb/update
+mkdir -p /adsb
+git clone --depth 1 https://github.com/ADSB-One/adsb-update.git /adsb/update
 
-pushd /adsbexchange/update/
+pushd /adsb/update/
 # always copy over this file
 cp -v -T boot-configs/wpa_supplicant.conf /boot/wpa_supplicant.conf.bak
 if [[ "$1" != "dont_reset_config" ]]; then

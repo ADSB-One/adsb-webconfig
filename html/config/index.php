@@ -16,7 +16,7 @@ include('comments.php');
 		color: #FFF;
 	}
 
-	.adsbx-green {
+	.adsb-green {
 		color: #FFF;
 	}
 
@@ -51,7 +51,7 @@ include('comments.php');
 	.container-padding {
 		padding: 5px;
 	}
-	.adsbx-width {
+	.adsb-width {
 		max-width: 450px;
 	}
 </style>
@@ -110,8 +110,8 @@ if ($_SESSION['authenticated'] != 1) {
 <center>
 
 
-			<h4 class="adsbx-green logo-margin"><img src="../img/adsbx-svg.svg" width="35"/>  ADSBexchange.com</h4>
-			<h6>ADSBX ADS-B Anywhere <br />version <?php echo file_get_contents("/boot/adsbx-version"); ?></h6>
+			<h4 class="adsb-green logo-margin"><img src="../img/adsbx-svg.svg" width="35"/>  ADSBexchange.com</h4>
+			<h6>ADSBX ADS-B Anywhere <br />version <?php echo file_get_contents("/boot/adsb-version"); ?></h6>
 			<a class="btn btn-primary" href="../">(..back to main menu)</a><br /><br />
 
 
@@ -159,13 +159,13 @@ if (!empty($_POST["DUMP1090"])) {
 
 	echo '<p>Restarting services... visit <a href="../index.php">this link</a> to verify changes in about 15 secs..</form></body></html>';
 
-	system('sudo /adsbexchange/webconfig/helpers/install-adsbconfig.sh > /dev/null 2>&1 &');
-	system('sudo /adsbexchange/webconfig/helpers/restart-services.sh > /dev/null 2>&1 &');
+	system('sudo /adsb/webconfig/helpers/install-adsbconfig.sh > /dev/null 2>&1 &');
+	system('sudo /adsb/webconfig/helpers/restart-services.sh > /dev/null 2>&1 &');
 	exit;
 } // end if $_post
 
 ?>
-<div class="container-sm adsbx-width">
+<div class="container-sm adsb-width">
 <table class="table table-striped table-dark">
 <?php
 	echo '<tr><td>';
@@ -290,7 +290,7 @@ if (!empty($_POST["DUMP1090"])) {
                 <?php
 
                 echo '</tr></td><tr><td>';
-		if (file_exists('/boot/adsbx-hardware')) {
+		if (file_exists('/boot/adsb-hardware')) {
                    echo "This hardware is sponsored by ADSBexchange.  Remote support active.  For more information, <a href=\"https://adsbexchange.com/contact\">contact ADSBexchange.</a><!--";
                 }
 
@@ -337,7 +337,7 @@ if (!empty($_POST["DUMP1090"])) {
                 ?>
                 </select>
                 <?php
-		if (file_exists('/boot/adsbx-hardware')) {
+		if (file_exists('/boot/adsb-hardware')) {
                     echo "-->";
                 }
                 echo '</tr></td><tr><td>';

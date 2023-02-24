@@ -1,6 +1,6 @@
 #!/bin/bash
 
-log=/adsbexchange/adsbx-update.log
+log=/adsb/adsb-update.log
 rm -f $log
 exec &> >(tee -a "$log")
 
@@ -8,8 +8,8 @@ export DEBIAN_FRONTEND=noninteractive
 apt update
 #apt upgrade -y
 
-bash -c "$(wget -nv -O - https://raw.githubusercontent.com/ADSBexchange/adsbx-update/main/update-adsbx.sh)"
-bash -c "$(wget -nv -O - https://raw.githubusercontent.com/dstreufert/adsbx-webconfig/master/update-webconfig.sh)"
+bash -c "$(wget -nv -O - https://raw.githubusercontent.com/ADSB-One/adsb-update/main/update-adsb.sh)"
+bash -c "$(wget -nv -O - https://raw.githubusercontent.com/ADSB-One/adsb-webconfig/master/update-webconfig.sh)"
 
 echo "rebooting..."
 sleep 5

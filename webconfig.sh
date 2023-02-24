@@ -79,7 +79,7 @@ fi
 if [[ $internet == 1 ]] || [[ $connected == 1 ]]; then
     echo > /dev/tty1
     echo ------------- > /dev/tty1
-    echo "Use the webinterface at http://adsbexchange.local OR http://$(ip route get 1.2.3.4 | grep -m1 -o -P 'src \K[0-9,.]*')" > /dev/tty1
+    echo "Use the webinterface at http://adsb.local OR http://$(ip route get 1.2.3.4 | grep -m1 -o -P 'src \K[0-9,.]*')" > /dev/tty1
     echo ------------- > /dev/tty1
 fi
 
@@ -121,17 +121,17 @@ if [[ $connected == 1 ]]; then
 fi
 
 
-echo "ip connectivity failed, enabling ADSBx-config network"
+echo "ip connectivity failed, enabling ADSB-config network"
 
 echo > /dev/tty1
 echo ------------- > /dev/tty1
-echo "Internet can't be reached with current WiFi settings, enabling ADSBx-config WiFi Network!" > /dev/tty1
-echo "Use your smartphone / laptop to connect to the WiFi network called: ADSBx-config" > /dev/tty1
-echo "On that device visit the URL http://adsbexchange.local in your browser" > /dev/tty1
+echo "Internet can't be reached with current WiFi settings, enabling ADSB-config WiFi Network!" > /dev/tty1
+echo "Use your smartphone / laptop to connect to the WiFi network called: ADSB-config" > /dev/tty1
+echo "On that device visit the URL http://adsb.local in your browser" > /dev/tty1
 echo "Select a WiFi network / country / password for the Raspberry Pi to join" > /dev/tty1
 echo ------------- > /dev/tty1
 
-netnum=$(wpa_cli list_networks | grep ADSBx-config | cut -f 1)
+netnum=$(wpa_cli list_networks | grep ADSB-config | cut -f 1)
 wpa_cli select_network $netnum
 wpa_cli enable_network $netnum
 
@@ -144,7 +144,7 @@ totalwait=0
 until [ $totalwait -gt 900 ]
 do
     ssid=$(wpa_cli status | grep ssid | grep -v bssid | cut -d "=" -f 2)
-    if [ "$ssid" = "ADSBx-config" ]; then
+    if [ "$ssid" = "ADSB-config" ]; then
         ipset=$(ip address show dev wlan0 | grep "172.23.45.1")
 
         if [ -z "$ipset" ]; then
@@ -157,7 +157,7 @@ do
         fi
     fi
 
-    if (( $totalwait > 30 )) && [[ "$ssid" != "ADSBx-config" ]]; then
+    if (( $totalwait > 30 )) && [[ "$ssid" != "ADSB-config" ]]; then
         # if for some reason we can't enable the config network, bail.
         break;
     fi
@@ -166,10 +166,10 @@ do
     sleep 1
 done
 
-if [[ "$ssid" == "ADSBx-config" ]]; then
+if [[ "$ssid" == "ADSB-config" ]]; then
     ping $clientip -I wlan0 -f -w 1; hostup=$?
     if [ $hostup -eq 0 ]; then
-        echo "timeout tripped but client connected, disabling ADSBx-config in 900 sec"
+        echo "timeout tripped but client connected, disabling ADSB-config in 900 sec"
         sleep 900
         wpa_cli disable $netnum
     fi

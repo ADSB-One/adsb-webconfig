@@ -19,7 +19,7 @@ cd /tmp
 updir=/tmp/update-webconfig
 
 rm -rf $updir
-git clone --depth 1 https://github.com/dstreufert/adsbx-webconfig.git $updir
+git clone --depth 1 https://github.com/ADSB-One/adsb-webconfig.git $updir
 
 cd $updir
 bash install.sh dont_reset_config
@@ -28,7 +28,7 @@ bash install.sh dont_reset_config
 cd /tmp
 rm -rf $updir
 
-echo "8.2.$(date '+%y%m%d')" > /boot/adsbx-version-webconfig
+echo "8.2.$(date '+%y%m%d')" > /boot/adsb-version-webconfig
 
 echo '--------------------------------------------'
 echo '        update-webconfig complete.          '

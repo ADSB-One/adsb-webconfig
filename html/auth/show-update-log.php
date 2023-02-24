@@ -5,7 +5,7 @@ if ($_SESSION['authenticated'] != 1) {
 	exit();
 }
 
-system('tail -n30 /adsbexchange/adsbx-update.log');
+system('tail -n30 /adsb/adsb-update.log');
 //echo($output);
 ?>
 

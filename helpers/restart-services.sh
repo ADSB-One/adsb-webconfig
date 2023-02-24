@@ -9,11 +9,11 @@ restartIfEnabled() {
 
 systemctl restart webconfig
 
-adsbx-first-run
+adsb-first-run
 
-services="readsb dump978-fa adsbexchange-978 adsbexchange-feed adsbexchange-mlat webconfig leds"
+services="readsb dump978-fa adsb-978 adsb-feed adsb-mlat webconfig leds"
 for service in $services; do
     restartIfEnabled $service
 done
 
-systemctl start adsbx-zt-enable
+systemctl start adsb-zt-enable
