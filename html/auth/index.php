@@ -139,9 +139,9 @@ if (!empty($_POST["password"]) or $unlocked) {
 <body>
 <center>
 
-<h4 class="adsb-green logo-margin"><img src="../img/adsbx-svg.svg" width="35"/>  ADSBexchange.com</h4>
+<h4 class="adsb-green logo-margin">ADSBexchange.com</h4>
 <h6>ADSB ADS-B Anywhere<br />Feeder Authorization</h6>
-<a class="btn btn-primary" href="../">(..back to main menu)</a><br />
+<a class="btn btn-primary" href="../">Back to main menu</a><br />
 <br />
 This password is synced with local user account "pi",<br />
 whose default password is <a href="https://www.adsb.one/sd-card-docs/">listed in the documentation.</a>

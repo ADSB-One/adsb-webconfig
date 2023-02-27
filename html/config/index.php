@@ -112,7 +112,7 @@ if ($_SESSION['authenticated'] != 1) {
 
 			<h4 class="adsb-green logo-margin"><img src="../img/adsbx-svg.svg" width="35"/>  ADSBexchange.com</h4>
 			<h6>ADSBX ADS-B Anywhere <br />version <?php echo file_get_contents("/boot/adsb-version"); ?></h6>
-			<a class="btn btn-primary" href="../">(..back to main menu)</a><br /><br />
+			<a class="btn btn-primary" href="../">Back to main menu</a><br /><br />
 
 
 <form method='POST' name="configform" action="./index.php" onsubmit="return confirm('Save configuration and restart services?');">

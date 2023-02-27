@@ -62,7 +62,7 @@
 <center>
 
 <h2>ADSBexchange.com<br />
-Custom Image - System Info</h2><a href="../">(..back to main menu)</a><br /><br />
+Custom Image - System Info</h2><a class="btn btn-primary" href="../">Back to main menu</a><br /><br />
 
 <table class="table table-dark">
 

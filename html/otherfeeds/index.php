@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <center>
 
 <h4 class="adsb-green logo-margin"><img src="../img/adsbx-svg.svg" width="35"/>  ADSBexchange.com</h4>
-<a class="btn btn-primary" href="../">(..back to main menu)</a><br /><br />
+<a class="btn btn-primary" href="../">Back to main menu</a><br /><br />
 
 <h3>Configure other feed clients:</h3>
 

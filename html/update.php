@@ -27,7 +27,7 @@ tr:nth-child(even) {
 <center>
 
 <h2>ADSBexchange.com<br>
-Custom Image - Update</h2><a href="../index.php">(..back to main menu)</a><br><br>
+Custom Image - Update</h2><a class="btn btn-primary" href="../">Back to main menu</a><br /><br>
 
 Updates key software components
 <p>
